@@ -7,5 +7,6 @@ Rails.application.routes.draw do
                :sign_up => 'sign-up'
              })
 
+  resources :todo_lists, :path => 'lists'
   root 'pages#index'
 end
