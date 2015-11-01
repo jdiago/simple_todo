@@ -2,5 +2,6 @@
 
 <%= form_for @todo_list do |f| %>
   <%= f.text_field :name %>
+  <%= f.check_box :is_private %>
   <%= f.submit %>
 <% end %>
