@@ -6,7 +6,7 @@ class TodoListsController < ApplicationController
   end
 
   def show
-    @todo_list = TodoList.find params[:id]
+    @todo_list = TodoList.includes(:list_items).find(params[:id])
   end
 
   def new

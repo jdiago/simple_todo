@@ -24,6 +24,7 @@ end
 
 group :test do
   gem 'capybara', '~> 2.5'
+  gem 'selenium-webdriver', '~> 2.48', '>= 2.48.1'
   gem 'database_cleaner', '~> 1.5', '>= 1.5.1'
 end
 
