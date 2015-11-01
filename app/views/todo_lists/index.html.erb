@@ -1,7 +1,19 @@
 <%= link_to 'New List', new_todo_list_path %>
 
+<h2>My lists</h2>
+<ul>
+  <% @my_lists.each do |list| %>
+    <li>
+      <%= link_to list.name, todo_list_path(list) %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Public lists</h2>
 <ul>
   <% @todo_lists.each do |list| %>
-    <li><%= list.name %></li>
+    <li>
+      <%= link_to list.name, todo_list_path(list) %>
+    </li>
   <% end %>
 </ul>

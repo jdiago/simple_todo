@@ -3,4 +3,6 @@ class TodoList < ActiveRecord::Base
   has_many :list_items
 
   validates :name, presence: true
+
+  scope :is_public, -> { where(is_private: false) }
 end
