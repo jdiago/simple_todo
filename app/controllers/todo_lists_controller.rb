@@ -2,7 +2,8 @@ class TodoListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @todo_lists = TodoList.all
+    @my_lists = current_user.todo_lists
+    @todo_lists = TodoList.is_public - @my_lists
   end
 
   def show
