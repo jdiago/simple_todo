@@ -1,1 +1,5 @@
-<%= @todo_list.name %>
+<h1>
+  <%= @todo_list.name %>
+</h1>
+
+<%= render partial: "list_items/list_items", locals: { list_items: @todo_list.list_items } %>
