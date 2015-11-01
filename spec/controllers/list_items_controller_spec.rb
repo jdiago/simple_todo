@@ -16,6 +16,13 @@ RSpec.describe ListItemsController, type: :controller do
       end
     end
 
-    describe 'DELETE destroy'
+    describe 'DELETE destroy' do
+      it 'deletes a list item' do
+        list_item = create :list_item, todo_list: @list
+        expect{
+          xhr :delete, :destroy, todo_list_id: @list.id, id: list_item.id
+        }.to change{ ListItem.count }.by(-1)
+      end
+    end
   end
 end

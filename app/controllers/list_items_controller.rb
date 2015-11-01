@@ -7,6 +7,11 @@ class ListItemsController < ApplicationController
     @list_item.save
   end
 
+  def destroy
+    @list_item = ListItem.find params[:id]
+    @list_item.destroy
+  end
+
   private
 
   def list_item_params
