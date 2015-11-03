@@ -18,7 +18,7 @@ RSpec.describe 'creating a list', type: :feature do
       expect(page).to have_content('New List')
 
       fill_in 'todo_list[name]', with: 'test list'
-      click_on 'Create Todo list'
+      click_on 'Save'
 
       expect(current_path).to eq(todo_list_path(TodoList.last))
       expect(page).to have_content('test list')

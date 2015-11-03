@@ -27,8 +27,12 @@ class TodoListsController < ApplicationController
 
   def fav
     @todo_list = TodoList.find(params[:id])
-    current_user.add_to_fav(list: @todo_list)
-    flash.now[:notice] = 'list favorited'
+    begin
+      current_user.add_to_fav(list: @todo_list)
+      flash.now[:notice] = 'list favorited'
+    rescue ActiveRecord::RecordInvalid
+      flash.now[:alert] = 'error'
+    end
   end
 
   private
