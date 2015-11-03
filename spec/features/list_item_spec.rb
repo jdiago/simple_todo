@@ -14,7 +14,7 @@ RSpec.describe 'list items', type: :feature do
     end
 
     it 'allows the current user to add list items', js: true do
-      visit(todo_list_path(@list))
+      visit todo_list_path(@list)
       fill_in 'list_item[name]', with: 'test item 1'
       click_on 'Save List item'
       within('#list_items') do
@@ -27,7 +27,7 @@ RSpec.describe 'list items', type: :feature do
       two = create :list_item, name: 'list item 2', todo_list: @list
       three = create :list_item, name: 'list item 3', todo_list: @list
 
-      visit(todo_list_path(@list))
+      visit todo_list_path(@list)
       within("#list_item_#{two.id}") do
         click_on 'delete'
       end

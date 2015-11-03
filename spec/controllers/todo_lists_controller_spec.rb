@@ -15,6 +15,8 @@ RSpec.describe TodoListsController, type: :controller do
 
       it 'returns lists' do
         get :index
+        expect(assigns[:my_lists]).to_not be_nil
+        expect(assigns[:my_favs]).to_not be_nil
         expect(assigns[:todo_lists]).to_not be_nil
       end
     end
@@ -62,6 +64,14 @@ RSpec.describe TodoListsController, type: :controller do
         }.to change{TodoList.count}.by(0)
 
         expect(response).to render_template(:new)
+      end
+    end
+
+    describe 'POST fav' do
+      it 'returns http success' do
+        list = create :todo_list
+        xhr :post, :fav, id: list.id
+        expect(response).to have_http_status(:success)
       end
     end
   end
