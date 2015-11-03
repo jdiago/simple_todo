@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031232416) do
+ActiveRecord::Schema.define(version: 20151101222159) do
+
+  create_table "favorite_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "todo_list_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "favorite_lists", ["todo_list_id"], name: "index_favorite_lists_on_todo_list_id"
+  add_index "favorite_lists", ["user_id", "todo_list_id"], name: "index_favorite_lists_on_user_id_and_todo_list_id", unique: true
+  add_index "favorite_lists", ["user_id"], name: "index_favorite_lists_on_user_id"
 
   create_table "list_items", force: :cascade do |t|
     t.string  "name",         default: "", null: false

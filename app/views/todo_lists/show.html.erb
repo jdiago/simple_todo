@@ -2,4 +2,8 @@
   <%= @todo_list.name %>
 </h1>
 
-<%= render partial: "list_items/list_items", locals: { list_items: @todo_list.list_items } %>
+<%= link_to 'favorite', fav_todo_list_path(@todo_list), remote: true, method: :post %>
+
+<%= render partial: 'list_items/list_items', locals: { list_items: @todo_list.list_items } %>
+
+<%= link_to 'back', todo_lists_path %>

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
              })
 
   resources :todo_lists, :path => 'lists' do
+    member do
+      post 'fav'
+    end
     resources :list_items, :only => [:create, :destroy]
   end
   root 'pages#index'

@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :todo_lists
+  has_many :favorite_lists
+
+  def add_to_fav(list:)
+    FavoriteList.create(user: self, todo_list: list)
+  end
 end

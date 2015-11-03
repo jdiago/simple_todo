@@ -9,6 +9,15 @@
   <% end %>
 </ul>
 
+<h2>My favorites</h2>
+<ul>
+  <% @my_favs.each do |list| %>
+    <li>
+      <%= link_to list.name, todo_list_path(list) %>
+    </li>
+  <% end %>
+</ul>
+
 <h2>Public lists</h2>
 <ul>
   <% @todo_lists.each do |list| %>

@@ -3,6 +3,7 @@ class TodoListsController < ApplicationController
 
   def index
     @my_lists = current_user.todo_lists
+    @my_favs = current_user.favorite_lists.map &:todo_list
     @todo_lists = TodoList.is_public - @my_lists
   end
 
@@ -22,6 +23,12 @@ class TodoListsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def fav
+    @todo_list = TodoList.find(params[:id])
+    current_user.add_to_fav(list: @todo_list)
+    flash.now[:notice] = 'list favorited'
   end
 
   private
