@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :favorite_lists
 
   def add_to_fav(list:)
-    FavoriteList.create(user: self, todo_list: list)
+    FavoriteList.create!(user: self, todo_list: list)
   end
 end

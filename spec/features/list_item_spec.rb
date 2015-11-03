@@ -16,7 +16,7 @@ RSpec.describe 'list items', type: :feature do
     it 'allows the current user to add list items', js: true do
       visit todo_list_path(@list)
       fill_in 'list_item[name]', with: 'test item 1'
-      click_on 'Save List item'
+      click_on 'Add'
       within('#list_items') do
         expect(page).to have_content('test item 1')
       end

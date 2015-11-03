@@ -7,17 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if user_signed_in? %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %> |
-    <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <% if user_signed_in? %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign in', new_user_session_path %> |
+          <%= link_to 'Sign up', new_user_registration_path %>
+        <% end %>
+      </div>
+      <div class="col-xs-9">
+        <div id="notices">
+          <% if notice.present? %>
+            <aside class="alert alert-info">
+              <%= notice %>
+            </aside>
+          <% end %>
+          <% if alert.present? %>
+            <aside class="alert alert-danger">
+              <%= alert %>
+            </aside>
+          <% end %>
+        </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <%= yield %>
-
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,1 +1,6 @@
-$('.notice').text('<%= j flash[:notice] %>');
+<% if flash[:notice] %>
+  $('#notices').html('<%= j "<aside class='alert alert-info'>#{flash[:notice]}</aside>".html_safe %>');
+<% end %>
+<% if flash[:alert] %>
+  $('#notices').html('<%= j "<aside class='alert alert-danger'>#{flash[:alert]}</aside".html_safe %>');
+<% end %>
